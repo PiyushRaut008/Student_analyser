@@ -38,6 +38,7 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
+            color: #333;
         }
         
         .form-group input[type="text"], .form-group input[type="number"] {
@@ -46,6 +47,7 @@
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .form-group input[type="submit"], .form-group input[type="button"], form[action="/dash_board"] input[type="submit"] {
@@ -57,6 +59,7 @@
             background-color: #4CAF50;
             color: #fff;
             cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .form-group input[type="submit"]:hover, .form-group input[type="button"]:hover, form[action="/dash_board"] input[type="submit"]:hover {
@@ -72,18 +75,36 @@
         .semester-cgpa label {
             width: 20%;
             margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
         }
         
         .semester-cgpa input[type="number"] {
             width: 70%;
             margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .update-section {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .update-section h2 {
+            margin-top: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2>Student CGPA Tracker</h2>
+            <h2>Student Data Analyser</h2>
         </div>
         <form action="/data" method="post">
             <div class="form-group">
@@ -134,9 +155,31 @@
         <form action="/dash_board" method="post">
             <input type="submit" value="View Dashboard">
         </form>
-		<form action="/uploades" method="post">
-            <input type="submit" value="Upload the data">
+
+        <form action="/view_data" method="get">
+            <input type="submit" value="view data">
         </form>
+
+        
+        <div class="update-section">
+            <h2>Update Student Data</h2>
+            <form action="/update" method="GET">
+                <label for="update_roll_number">Enter Roll Number:</label>
+                <input type="text" id="update_roll_number" name="roll_number" required>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+
+        <div class="Delete-section">
+            <h2>Delete Student Data</h2>
+            <form action="/delete" method="POST">
+                <label for="delete_roll_number">Enter Roll Number:</label>
+                <input type="text" id="delete_roll_number" name="roll_number" required>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        
+
     </div>
 </body>
 </html>
